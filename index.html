@@ -1,0 +1,357 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Wireframe Catálogo Químico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una barra de pantallas arriba, cada pantalla como un "marco de navegador" en escala de grises con notas azules de plano al margen */
+:root{
+  --bg:#eef0f2; --paper:#ffffff; --ink:#23272b; --muted:#6b737b; --line:#c3c9cf; --fill:#e2e6ea; --note:#1f5fae; --note-bg:#e6effa;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15181b; --paper:#1f2327; --ink:#e4e7ea; --muted:#99a2ab; --line:#3d444b; --fill:#2b3035; --note:#7fb0ee; --note-bg:#1d2a3a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15181b; --paper:#1f2327; --ink:#e4e7ea; --muted:#99a2ab; --line:#3d444b; --fill:#2b3035; --note:#7fb0ee; --note-bg:#1d2a3a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:24px 48px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:20px}
+header.top h1{font-size:1.5rem;margin:0;text-wrap:balance}
+header.top p{margin:4px 0 0;color:var(--muted);max-width:65ch}
+nav.screens{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:8px;z-index:5}
+nav.screens button{font:500 .85rem var(--sans);padding:8px 14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;cursor:pointer}
+nav.screens button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--note);outline-offset:2px}
+.frame{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--fill)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.bar span{font:.75rem var(--mono);color:var(--muted);margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.site{padding:0}
+.sitenav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)}
+.logo{font-weight:600;border:1.5px dashed var(--line);padding:4px 10px;border-radius:4px}
+.links{display:flex;flex-wrap:wrap;gap:14px;font-size:.9rem;color:var(--muted)}
+.links a{color:inherit;text-decoration:none;cursor:pointer}
+.links a.on{color:var(--ink);font-weight:600;text-decoration:underline}
+.sec{padding:24px 20px;display:grid;gap:16px;border-bottom:1px solid var(--fill)}
+.ph{background:repeating-linear-gradient(45deg,var(--fill) 0 8px,transparent 8px 16px);border:1.5px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--muted);font:.8rem var(--mono);text-align:center;padding:8px;min-height:80px}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
+.hero h2{font-size:1.6rem;margin:0 0 8px;text-wrap:balance}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:500 .85rem var(--sans);padding:9px 14px;border-radius:6px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid var(--line);border-radius:6px;padding:12px;display:grid;gap:8px;align-content:start;min-width:0}
+.card h4{margin:0;font-size:.95rem}
+.tag{display:inline-block;font:.7rem var(--mono);text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--muted)}
+.brands{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.brands .ph{min-height:48px}
+.muted{color:var(--muted)}
+h3{margin:0;font-size:1.1rem}
+.note{background:var(--note-bg);color:var(--note);border-left:3px solid var(--note);font:.8rem/1.45 var(--mono);padding:8px 10px;border-radius:0 4px 4px 0}
+.cat{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.filters{display:grid;gap:14px;align-content:start}
+.filters fieldset{border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin:0;display:grid;gap:6px}
+.filters legend{font:600 .75rem var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:0 4px}
+.filters label{display:flex;gap:8px;align-items:center;font-size:.9rem;cursor:pointer}
+input[type=search],input[type=text],input[type=email],input[type=password],input[type=url],select,textarea{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.detail .ph{min-height:260px}
+.wa{position:absolute;right:16px;bottom:16px;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:600 .7rem var(--mono)}
+.relative{position:relative}
+footer.sf{padding:16px 20px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:.8rem;color:var(--muted);background:var(--fill)}
+.admin{display:grid;grid-template-columns:200px 1fr;min-height:420px}
+.side{border-right:1px solid var(--line);padding:16px;display:grid;gap:6px;align-content:start;background:var(--fill)}
+.side a{padding:6px 8px;border-radius:4px;cursor:pointer;font-size:.9rem;color:var(--ink);text-decoration:none}
+.side a.on{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font:600 .72rem var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+td .mini{width:36px;height:28px;min-height:0;padding:0}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form label{display:grid;gap:4px;font-size:.82rem;color:var(--muted)}
+.form .full{grid-column:1/-1}
+.login{max-width:340px;margin:40px auto;display:grid;gap:12px;padding:24px;border:1px solid var(--line);border-radius:8px}
+@media (max-width:760px){
+  .hero,.grid2,.detail,.cat,.admin,.form{grid-template-columns:1fr}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .brands{grid-template-columns:repeat(3,1fr)}
+  .side{border-right:0;border-bottom:1px solid var(--line);grid-auto-flow:column;overflow-x:auto}
+}
+@media (max-width:440px){.grid3{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Wireframe del sitio y catálogo</h1>
+    <p>Boceto de baja fidelidad para una empresa de suministros químicos con línea clínica e industrial. Los filtros del catálogo y la navegación funcionan para que el cliente vea el recorrido. Las notas azules explican cada bloque.</p>
+  </header>
+
+  <nav class="screens" aria-label="Pantallas">
+    <button data-go="inicio" aria-pressed="true">1. Inicio</button>
+    <button data-go="catalogo" aria-pressed="false">2. Catálogo</button>
+    <button data-go="detalle" aria-pressed="false">3. Detalle de producto</button>
+    <button data-go="contacto" aria-pressed="false">4. Contacto y ubicaciones</button>
+    <button data-go="login" aria-pressed="false">5. Acceso admin</button>
+    <button data-go="admin" aria-pressed="false">6. Panel admin</button>
+  </nav>
+
+  <!-- SITIO PÚBLICO -->
+  <div class="frame" id="publico">
+    <div class="bar"><i></i><i></i><i></i><span id="url">www.empresa.com.mx/</span></div>
+    <div class="site relative">
+      <div class="sitenav">
+        <div class="logo">LOGO EMPRESA</div>
+        <div class="links">
+          <a data-go="inicio">Inicio</a><a data-go="inicio">Nosotros</a><a data-go="catalogo">Catálogo</a><a data-go="contacto">Contacto</a>
+        </div>
+        <button class="btn solid" data-wa>Cotizar por WhatsApp</button>
+      </div>
+
+      <!-- INICIO -->
+      <section data-screen="inicio">
+        <div class="sec">
+          <div class="hero">
+            <div>
+              <span class="tag">Distribuidor autorizado</span>
+              <h2>Suministros químicos para laboratorio clínico e industria</h2>
+              <p class="muted">Frase corta sobre la empresa, años de experiencia y cobertura.</p>
+              <div class="btns"><button class="btn solid" data-go="catalogo">Ver catálogo</button><button class="btn" data-wa>Solicitar cotización</button></div>
+            </div>
+            <div class="ph" style="min-height:200px">Foto principal<br>(laboratorio / almacén)</div>
+          </div>
+        </div>
+        <div class="sec">
+          <h3>Nuestras líneas</h3>
+          <div class="grid2">
+            <div class="card"><div class="ph">Imagen línea clínica</div><h4>Línea clínica</h4><p class="muted" style="margin:0">Reactivos, pruebas de diagnóstico, consumibles de laboratorio clínico.</p><button class="btn" data-go="catalogo" data-linea="Clínica">Ver productos clínicos</button></div>
+            <div class="card"><div class="ph">Imagen línea industrial</div><h4>Línea industrial</h4><p class="muted" style="margin:0">Químicos para procesos, limpieza industrial y tratamiento de agua.</p><button class="btn" data-go="catalogo" data-linea="Industrial">Ver productos industriales</button></div>
+          </div>
+          <div class="note">Cada tarjeta abre el catálogo ya filtrado por esa línea.</div>
+        </div>
+        <div class="sec">
+          <h3>Marcas que distribuimos</h3>
+          <div class="brands"><div class="ph">Logo</div><div class="ph">Logo</div><div class="ph">Logo</div><div class="ph">Logo</div><div class="ph">Logo</div><div class="ph">Logo</div></div>
+          <div class="note">Los logos salen de la sección Marcas del panel admin. Al dar clic en uno se filtra el catálogo por esa marca.</div>
+        </div>
+        <div class="sec">
+          <h3>Productos destacados</h3>
+          <div class="grid3" id="destacados"></div>
+          <div class="note">Se muestran los productos marcados como "destacado" en el panel.</div>
+        </div>
+        <div class="sec">
+          <h3>Nosotros</h3>
+          <div class="grid2"><p class="muted" style="margin:0">Texto de quiénes son, misión, visión y valores. Certificaciones o permisos sanitarios si aplican.</p><div class="ph">Foto del equipo o instalaciones</div></div>
+        </div>
+      </section>
+
+      <!-- CATÁLOGO -->
+      <section data-screen="catalogo" hidden>
+        <div class="sec">
+          <h3>Catálogo de productos</h3>
+          <div class="cat">
+            <div class="filters">
+              <input type="search" id="q" placeholder="Buscar producto" aria-label="Buscar producto">
+              <fieldset><legend>Línea</legend>
+                <label><input type="radio" name="linea" value="" checked> Todas</label>
+                <label><input type="radio" name="linea" value="Clínica"> Clínica</label>
+                <label><input type="radio" name="linea" value="Industrial"> Industrial</label>
+              </fieldset>
+              <fieldset id="fmarcas"><legend>Marca</legend></fieldset>
+              <div class="note">Filtros combinables. En celular se abren en un panel desplegable.</div>
+            </div>
+            <div style="display:grid;gap:12px;align-content:start;min-width:0">
+              <p class="muted" style="margin:0" id="count"></p>
+              <div class="grid3" id="lista"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETALLE -->
+      <section data-screen="detalle" hidden>
+        <div class="sec">
+          <p class="muted" style="margin:0;font-size:.85rem" id="migas">Catálogo › Clínica › Producto</p>
+          <div class="detail">
+            <div class="ph">Foto del producto</div>
+            <div style="display:grid;gap:12px;align-content:start">
+              <div><span class="tag" id="dLinea">Clínica</span></div>
+              <h2 style="margin:0" id="dNombre">Nombre del producto</h2>
+              <div style="display:flex;gap:10px;align-items:center"><div class="ph" style="min-height:32px;width:80px;padding:0">Logo</div><span id="dMarca" class="muted">Marca</span></div>
+              <p class="muted" style="margin:0">Descripción breve: uso, presentación, contenido. Ficha técnica en PDF opcional.</p>
+              <div class="btns">
+                <button class="btn solid" data-wa>Cotizar por WhatsApp</button>
+                <button class="btn">Ver página oficial ↗</button>
+              </div>
+              <div class="note">WhatsApp abre el chat de ventas con el mensaje: "Hola, quiero cotizar: <span id="dMsg">producto</span>".<br>"Ver página oficial" abre en otra pestaña el enlace del fabricante capturado en el panel.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sec">
+          <h3>Productos relacionados</h3>
+          <div class="grid3" id="relacionados"></div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section data-screen="contacto" hidden>
+        <div class="sec">
+          <h3>Contacto y ubicaciones</h3>
+          <div class="grid2">
+            <div class="card"><h4>Sucursal 1</h4><div class="ph" style="min-height:140px">Mapa de Google (enlace)</div><p class="muted" style="margin:0">Calle, número, colonia, ciudad<br>Tel. 000 000 0000 · Lun a Vie 9:00 a 18:00</p></div>
+            <div class="card"><h4>Sucursal 2</h4><div class="ph" style="min-height:140px">Mapa de Google (enlace)</div><p class="muted" style="margin:0">Calle, número, colonia, ciudad<br>Tel. 000 000 0000 · Lun a Vie 9:00 a 18:00</p></div>
+          </div>
+          <div class="grid2">
+            <div class="card"><h4>Escríbenos</h4><p class="muted" style="margin:0">ventas@empresa.com.mx<br>WhatsApp: 000 000 0000</p><div class="btns"><button class="btn solid" data-wa>Abrir WhatsApp</button></div></div>
+            <div class="card"><h4>Redes sociales</h4><p class="muted" style="margin:0">Facebook · Instagram · LinkedIn</p></div>
+          </div>
+          <div class="note">Sin formulario de contacto para evitar correo no deseado; el canal principal es WhatsApp. Se puede agregar un formulario si el cliente lo pide.</div>
+        </div>
+      </section>
+
+      <footer class="sf"><span>LOGO · Dirección · Teléfono · Correo</span><span>Aviso de privacidad · © 2026</span></footer>
+      <div class="wa" aria-hidden="true">WA</div>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div class="frame" id="loginF" hidden>
+    <div class="bar"><i></i><i></i><i></i><span>www.empresa.com.mx/admin</span></div>
+    <form class="login" id="loginForm">
+      <div class="logo" style="justify-self:center">LOGO EMPRESA</div>
+      <h3 style="text-align:center">Acceso al panel</h3>
+      <label for="lu" class="muted" style="font-size:.82rem">Correo<input id="lu" type="email" value="admin@empresa.com.mx"></label>
+      <label for="lp" class="muted" style="font-size:.82rem">Contraseña<input id="lp" type="password" value="********"></label>
+      <button class="btn solid" type="submit">Entrar</button>
+      <div class="note">Solo el personal dado de alta puede entrar. Incluye "Olvidé mi contraseña" por correo.</div>
+    </form>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="frame" id="adminF" hidden>
+    <div class="bar"><i></i><i></i><i></i><span>www.empresa.com.mx/admin/<b id="aPath" style="font-weight:400">productos</b></span></div>
+    <div class="admin">
+      <nav class="side" aria-label="Menú del panel">
+        <a class="on" data-tab="productos">Productos</a>
+        <a data-tab="marcas">Marcas</a>
+        <a data-tab="datos">Datos de contacto</a>
+        <a data-go="login">Cerrar sesión</a>
+      </nav>
+      <div class="sec" style="border:0;min-width:0">
+        <div data-tab-panel="productos" style="display:grid;gap:14px">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center"><h3>Productos</h3><button class="btn solid" id="nuevoP">+ Nuevo producto</button></div>
+          <div class="tablewrap"><table><thead><tr><th>Foto</th><th>Nombre</th><th>Línea</th><th>Marca</th><th>Visible</th><th></th></tr></thead><tbody id="tProd"></tbody></table></div>
+          <div id="formP" class="card" hidden>
+            <h4>Nuevo producto</h4>
+            <div class="form">
+              <label>Nombre<input id="fpN" type="text" placeholder="Ej. Reactivo de glucosa 500 ml"></label>
+              <label>Línea<select id="fpL"><option>Clínica</option><option>Industrial</option></select></label>
+              <label>Marca<select id="fpM"></select></label>
+              <label>Enlace a página oficial<input id="fpU" type="url" placeholder="https://fabricante.com/producto"></label>
+              <label class="full">Descripción<textarea id="fpD" rows="3"></textarea></label>
+              <label>Foto<div class="ph" style="min-height:60px">Arrastra o elige imagen</div></label>
+              <label style="align-content:end"><span><input id="fpX" type="checkbox"> Mostrar en destacados</span></label>
+            </div>
+            <div class="btns"><button class="btn solid" id="guardarP">Guardar</button><button class="btn" id="cancelP">Cancelar</button></div>
+          </div>
+          <div class="note">Editar, ocultar o eliminar desde cada fila. Los cambios aparecen en el sitio al guardar.</div>
+        </div>
+        <div data-tab-panel="marcas" hidden style="display:grid;gap:14px">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center"><h3>Marcas</h3><button class="btn solid">+ Nueva marca</button></div>
+          <div class="grid3" id="gMarcas"></div>
+          <div class="note">Cada marca tiene nombre, logo (PNG o SVG) y enlace a su sitio. No se puede borrar una marca que tiene productos asignados.</div>
+        </div>
+        <div data-tab-panel="datos" hidden style="display:grid;gap:14px">
+          <h3>Datos de contacto</h3>
+          <div class="form">
+            <label>WhatsApp de cotizaciones<input id="dw" type="text" value="52 000 000 0000"></label>
+            <label>Correo de ventas<input id="de" type="email" value="ventas@empresa.com.mx"></label>
+            <label class="full">Sucursales<textarea id="ds" rows="3">Sucursal 1: dirección, teléfono, horario, enlace a Maps
+Sucursal 2: dirección, teléfono, horario, enlace a Maps</textarea></label>
+          </div>
+          <div class="note">Estos datos alimentan el botón de WhatsApp, el pie de página y la página de Contacto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const marcas=["Marca A","Marca B","Marca C","Marca D","Marca E","Marca F"];
+const productos=[
+ {n:"Reactivo de glucosa 500 ml",l:"Clínica",m:"Marca A",d:true},
+ {n:"Tubos de recolección 4 ml",l:"Clínica",m:"Marca B",d:true},
+ {n:"Tiras reactivas de orina",l:"Clínica",m:"Marca A",d:false},
+ {n:"Control hematológico",l:"Clínica",m:"Marca C",d:false},
+ {n:"Hipoclorito de sodio 13% (20 L)",l:"Industrial",m:"Marca D",d:true},
+ {n:"Desengrasante industrial alcalino",l:"Industrial",m:"Marca E",d:false},
+ {n:"Sosa cáustica en escamas 25 kg",l:"Industrial",m:"Marca D",d:false},
+ {n:"Floculante para tratamiento de agua",l:"Industrial",m:"Marca F",d:false},
+ {n:"Alcohol isopropílico 99% (4 L)",l:"Industrial",m:"Marca E",d:false}
+];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let actual=productos[0];
+const paths={inicio:"",catalogo:"catalogo",detalle:"producto/",contacto:"contacto"};
+
+function tarjeta(p){
+  return `<div class="card"><div class="ph">Foto</div><span class="tag">${p.l}</span><h4>${p.n}</h4><span class="muted" style="font-size:.85rem">${p.m}</span><button class="btn" data-ver="${productos.indexOf(p)}">Ver producto</button></div>`;
+}
+function go(s,linea){
+  $$('nav.screens button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.go===s));
+  const pub=["inicio","catalogo","detalle","contacto"].includes(s);
+  $('#publico').hidden=!pub; $('#loginF').hidden=s!=="login"; $('#adminF').hidden=s!=="admin";
+  if(pub){
+    $$('[data-screen]').forEach(x=>x.hidden=x.dataset.screen!==s);
+    $$('.links a').forEach(a=>a.classList.toggle('on',a.dataset.go===s && a.textContent!=="Nosotros"));
+    $('#url').textContent="www.empresa.com.mx/"+paths[s]+(s==="detalle"?actual.n.toLowerCase().replace(/[^a-z0-9]+/g,"-"):"");
+  }
+  if(linea!==undefined){ $$('input[name=linea]').forEach(r=>r.checked=r.value===linea); filtrar(); }
+  if(s==="detalle") pintarDetalle();
+}
+function filtrar(){
+  const q=$('#q').value.toLowerCase(), l=$('input[name=linea]:checked').value;
+  const ms=$$('#fmarcas input:checked').map(i=>i.value);
+  const r=productos.filter(p=>(!l||p.l===l)&&(!ms.length||ms.includes(p.m))&&p.n.toLowerCase().includes(q));
+  $('#lista').innerHTML=r.map(tarjeta).join("")||'<p class="muted">No hay productos con esos filtros.</p>';
+  $('#count').textContent=`${r.length} producto${r.length===1?"":"s"}`;
+}
+function pintarDetalle(){
+  $('#dNombre').textContent=actual.n; $('#dLinea').textContent=actual.l; $('#dMarca').textContent=actual.m; $('#dMsg').textContent=actual.n;
+  $('#migas').textContent=`Catálogo › ${actual.l} › ${actual.n}`;
+  $('#relacionados').innerHTML=productos.filter(p=>p.l===actual.l&&p!==actual).slice(0,3).map(tarjeta).join("");
+}
+function pintarAdmin(){
+  $('#tProd').innerHTML=productos.map(p=>`<tr><td><div class="ph mini"></div></td><td>${p.n}</td><td>${p.l}</td><td>${p.m}</td><td>${p.oculto?"No":"Sí"}</td><td><button class="btn" style="padding:4px 10px">Editar</button></td></tr>`).join("");
+  $('#gMarcas').innerHTML=marcas.map(m=>`<div class="card"><div class="ph" style="min-height:56px">Logo</div><h4>${m}</h4><span class="muted" style="font-size:.8rem">${productos.filter(p=>p.m===m).length} productos</span><button class="btn" style="padding:4px 10px">Editar</button></div>`).join("");
+  $('#fpM').innerHTML=marcas.map(m=>`<option>${m}</option>`).join("");
+}
+
+$('#fmarcas').insertAdjacentHTML('beforeend',marcas.map((m,i)=>`<label><input type="checkbox" id="fm${i}" value="${m}"> ${m}</label>`).join(""));
+$('#destacados').innerHTML=productos.filter(p=>p.d).map(tarjeta).join("");
+filtrar(); pintarAdmin();
+
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]'); if(g){e.preventDefault(); go(g.dataset.go,g.dataset.linea); return;}
+  const v=e.target.closest('[data-ver]'); if(v){actual=productos[+v.dataset.ver]; go('detalle'); return;}
+  const t=e.target.closest('[data-tab]'); if(t){
+    $$('[data-tab]').forEach(a=>a.classList.toggle('on',a===t));
+    $$('[data-tab-panel]').forEach(p=>p.hidden=p.dataset.tabPanel!==t.dataset.tab);
+    $('#aPath').textContent=t.dataset.tab;
+  }
+});
+$('#q').addEventListener('input',filtrar);
+$$('input[name=linea]').forEach(r=>r.addEventListener('change',filtrar));
+$('#fmarcas').addEventListener('change',filtrar);
+$('#loginForm').addEventListener('submit',e=>{e.preventDefault(); go('admin');});
+$('#nuevoP').addEventListener('click',()=>{$('#formP').hidden=false;$('#fpN').focus();});
+$('#cancelP').addEventListener('click',()=>{$('#formP').hidden=true;});
+$('#guardarP').addEventListener('click',()=>{
+  const n=$('#fpN').value.trim(); if(!n){$('#fpN').focus();return;}
+  productos.push({n,l:$('#fpL').value,m:$('#fpM').value,d:$('#fpX').checked});
+  $('#fpN').value=""; $('#formP').hidden=true; pintarAdmin(); filtrar();
+  $('#destacados').innerHTML=productos.filter(p=>p.d).map(tarjeta).join("");
+});
+</script>
+
+</body></html>
